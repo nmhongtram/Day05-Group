@@ -80,11 +80,14 @@ và xử lý failure mode (input mơ hồ) bằng cách hỏi lại có hướng
 ## 7. Failure mode nguy hiểm nhất
 
 ```text
-Nếu user chọn ngày cụ thể, địa điểm và số người,
-AI báo không có combo,
-hậu quả là user giảm động lực tìm kiếm.
-Prototype sẽ xử lý bằng cách hiển thị thông báo không có combo, và fallback sang danh sách thay thế để user chọn riêng.
-Owner kiểm thử path này là [tên thành viên].
+Nếu user nhập ngày mơ hồ ("cuối tuần này", "dịp lễ", "tháng sau"),
+AI có thể parse sai ngày hoặc dùng ngày mặc định mà không thông báo,
+hậu quả là user nhìn kết quả không khớp nhu cầu thật,
+mất tin tưởng vào AI hoặc nghiêm trọng hơn là đặt nhầm ngày.
+Prototype sẽ xử lý bằng: luôn echo lại ngày AI đã hiểu trước khi render
+("Tôi hiểu bạn muốn nhận phòng 07/06 – trả phòng 08/06, đúng không?")
+— user confirm hoặc sửa trước khi kết quả hiện ra.
+Owner kiểm thử path này là: [tên thành viên phụ trách test].
 ```
 
 ---
